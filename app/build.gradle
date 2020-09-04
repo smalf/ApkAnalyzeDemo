@@ -6,6 +6,10 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
+    def keystorePropertiesFile = rootProject.file("keystore.properties")
+    def keyStoreProperties = new Properties()
+    keyStoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
     defaultConfig {
         applicationId "com.softserveinc.smal.apkanalyzedemo"
         minSdkVersion 19
@@ -14,6 +18,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "SECRET_TOKEN", keyStoreProperties["SECRET_TOKEN"])
     }
 
     buildTypes {
