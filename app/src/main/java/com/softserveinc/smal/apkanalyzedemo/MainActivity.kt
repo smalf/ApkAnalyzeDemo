@@ -3,8 +3,10 @@ package com.softserveinc.smal.apkanalyzedemo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.google.android.gms.ads.AdView
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var adView: AdView
     private val peopleRepository by lazy {
         PeopleRepository()
     }
@@ -21,9 +23,26 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.token_label3).text = nativeKey2
 
+        adView = findViewById(R.id.ad_view)
+        (applicationContext as DemoApplication).adManager.triggerAdLoading(adView)
 
         loadData()
         loadDataWithKeystoreDebugToken()
+    }
+
+    override fun onPause() {
+        adView.pause()
+        super.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adView.resume()
+    }
+
+    override fun onDestroy() {
+        adView.destroy()
+        super.onDestroy()
     }
 
     private fun loadData() {
