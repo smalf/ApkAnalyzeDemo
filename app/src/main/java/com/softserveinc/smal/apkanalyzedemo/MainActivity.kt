@@ -7,9 +7,6 @@ import com.google.android.gms.ads.AdView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var adView: AdView
-    private val peopleRepository by lazy {
-        PeopleRepository()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,12 +19,9 @@ class MainActivity : AppCompatActivity() {
         val nativeKey2 = nativeKey
 
         findViewById<TextView>(R.id.token_label3).text = nativeKey2
+        findViewById<TextView>(R.id.token_label4).text = getString(R.string.test_api_key)
 
-        adView = findViewById(R.id.ad_view)
-        (applicationContext as DemoApplication).adManager.triggerAdLoading(adView)
-
-        loadData()
-        loadDataWithKeystoreDebugToken()
+        initAds()
     }
 
     override fun onPause() {
@@ -45,12 +39,11 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-    private fun loadData() {
-        peopleRepository.getPeople(SECRET_TOKEN)
-    }
-
-    private fun loadDataWithKeystoreDebugToken() {
-        peopleRepository.getPeople(BuildConfig.SECRET_TOKEN)
+    private fun initAds() {
+        adView = findViewById(R.id.ad_view) //line: 43
+        (applicationContext as DemoApplication).adManager.apply { //line: 44
+            triggerAdLoading(adView) //line: 45
+        }
     }
 
     /**
