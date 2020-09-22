@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">APKAnalyzeDemo</string>
 
-    <string name="test_api_key">resources_secret_token</string>
+    <string name="test_api_key">resources_secret_token:lhkjdfgkl480hjpoiFGHJFGsdpf103oiqwekljkldfASDF</string>
 
     <string name="label_api_1">API 1 Call</string>
     <string name="label_api_2">API 2 Call</string>

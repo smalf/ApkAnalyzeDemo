@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     private external fun nativeSecretToken(): String
 
     companion object {
-        private const val SECRET_TOKEN = "const_secret_token"
+        private const val SECRET_TOKEN = "const_secret_token:qwerpsdflggkl480hjpoiFGHJFGsdpf103oiqwekljkldfASDF"
         private const val TAG = "MainActivity"
 
         // Used to load the 'native-key-store-lib' library on application startup.

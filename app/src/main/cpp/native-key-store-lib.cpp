@@ -5,7 +5,7 @@ extern "C" JNIEXPORT jstring JNICALL
 Java_com_softserveinc_smal_apkanalyzedemo_MainActivity_nativeSecretToken(
         JNIEnv* env,
         jobject /* this */) {
-    std::string secretToken = "native_secret_token";
+    std::string secretToken = "native_secret_token:fjkhajkshdgf234234DFGHFDGasdf";
     return env->NewStringUTF(secretToken.c_str());
 }
 
